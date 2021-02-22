@@ -1,0 +1,7 @@
+—удаление таблиц
+
+DROP TABLE IF EXISTS Employee;
+DROP TABLE IF EXISTS Service;
+DROP TABLE IF EXISTS Client;
+DROP TABLE IF EXISTS Contract;
+
