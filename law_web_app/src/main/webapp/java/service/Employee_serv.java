@@ -85,4 +85,20 @@ public class Employee_serv {
         return emps;
     }
 
+    public boolean EmployeeEqual(Employee new_emp)
+    {
+        Employee_serv serv = new Employee_serv();
+        Employee check_emp = serv.findEmployee(new_emp.getId_employee());
+
+        return ((new_emp.getId_employee() == check_emp.getId_employee()) &
+                (new_emp.getName().equals(check_emp.getName())) &
+                (new_emp.getSurname().equals(check_emp.getSurname())) &
+                (new_emp.getE_mail().equals(check_emp.getE_mail())) &
+                (new_emp.getPhone().equals(check_emp.getPhone())) &
+                (new_emp.getEducation().equals(check_emp.getEducation())) &
+                (new_emp.getHome_address().equals(check_emp.getHome_address())) &
+                (new_emp.getPosition().equals(check_emp.getPosition())) &
+                (new_emp.getWork_experience() == check_emp.getWork_experience()));
+    }
+
 }

@@ -78,4 +78,18 @@ public class Contract_serv {
 
         }
     }
+
+    public boolean ContractEqual(Contract new_contract)
+    {
+        Contract_serv serv = new Contract_serv();
+        Contract check_contract = serv.findContract(new_contract.getId_contract());
+
+        return ((new_contract.getId_contract() == check_contract.getId_contract()) &
+                (new_contract.getDate_of_begining().equals(check_contract.getDate_of_begining())) &
+                (new_contract.getDate_of_end().equals(check_contract.getDate_of_end())) &
+                (new_contract.getId_service() == check_contract.getId_service()) &
+                (new_contract.getId_client() == (check_contract.getId_client())) &
+                (new_contract.getId_employee() == check_contract.getId_employee()));
+
+    }
 }

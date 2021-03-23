@@ -1,13 +1,9 @@
 package DAO_classes;
 
-import entities.Client;
 import entities.Contract;
-import entities.Employee;
-import entities.Service;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
-import org.hibernate.query.Query;
 
 import java.util.List;
 
