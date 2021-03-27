@@ -23,16 +23,9 @@ public class Contract_serv {
     //удаление контракта
     public boolean DeleteContract(int id)
     {
-        try {
             Contract cont_1 = dao_cont.findById(id);
             check = dao_cont.delete(cont_1);
-            return true;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return false;
-
-        }
+            return check;
     }
 
     //список контрактов по услуге, сотруднику и дате
@@ -68,15 +61,8 @@ public class Contract_serv {
     //создание контракта
     public boolean CreateContract(Contract cont_1)
     {
-        try {
             check = dao_cont.save(cont_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
 
     public boolean ContractEqual(Contract new_contract)

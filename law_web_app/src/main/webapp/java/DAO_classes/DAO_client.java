@@ -18,7 +18,6 @@ public class DAO_client {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
@@ -29,7 +28,6 @@ public class DAO_client {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Client.class, id);
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return null;
         }
     }
@@ -45,7 +43,6 @@ public class DAO_client {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
@@ -60,7 +57,6 @@ public class DAO_client {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }

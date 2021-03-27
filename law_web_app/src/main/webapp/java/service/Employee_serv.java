@@ -23,36 +23,21 @@ public class Employee_serv {
     //удаление сотрудника
     public boolean DeleteEmployee(int id)
     {
-        try {
             Employee emp_1 = dao_cl.findById(id);
             check = dao_cl.delete(emp_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
 
     //создание сотрудника
     public boolean CreateEmployee(Employee emp_1)
     {
-        try {
             check = dao_cl.save(emp_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
 
     //обновление информации о сотруднике
     public boolean UpdateEmployee(int id, String name, String surname, String phone, String e_mail, String education,  String home_address, String position,  int work_experience )
     {
-        try {
             Employee emp_1 = dao_cl.findById(id);
             emp_1.setName(name);
             emp_1.setSurname(surname);
@@ -64,12 +49,6 @@ public class Employee_serv {
             emp_1.setWork_experience(work_experience);
             check = dao_cl.update(emp_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
 
     //список сотрудников по заданной услуге, клиентам и дате

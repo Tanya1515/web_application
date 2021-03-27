@@ -20,7 +20,6 @@ public class DAO_contract {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
@@ -49,7 +48,6 @@ public class DAO_contract {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }

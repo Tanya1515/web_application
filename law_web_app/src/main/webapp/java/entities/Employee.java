@@ -1,7 +1,7 @@
 package entities;
 
 import javax.persistence.*;
-import service.Employee_serv;
+
 
 @Entity
 @Table(name = "Employee")

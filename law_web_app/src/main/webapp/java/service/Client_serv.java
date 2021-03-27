@@ -12,7 +12,6 @@ public class Client_serv {
 
     private DAO_client dao_cl = new DAO_client();
     public boolean check;
-
     public Client_serv() {
     }
 
@@ -20,40 +19,22 @@ public class Client_serv {
     public Client findClient(int id) {
         return dao_cl.findById(id);
     }
-
     //удаление клиента
     public boolean DeleteClient(int id)
     {
-        try {
             Client cl_1 = dao_cl.findById(id);
             check = dao_cl.delete(cl_1);
-            return true;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return false;
-
-        }
+            return check;
     }
-
     //создание клиента
     public boolean CreateClient(Client cl_1)
     {
-        try {
             check = dao_cl.save(cl_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
-
     //обновление информации о клиенте
     public boolean UpdateClient(int id, String name, String surname, String phone, String e_mail )
     {
-        try {
             Client cl_1 = dao_cl.findById(id);
             cl_1.setName(name);
             cl_1.setSurname(surname);
@@ -61,14 +42,7 @@ public class Client_serv {
             cl_1.setE_mail(e_mail);
             check = dao_cl.update(cl_1);
             return check;
-        }
-        catch (Exception e) {
-            System.out.println("Исключение!" + e);
-            return check;
-
-        }
     }
-
     //список клиентов по услуге, сотруднику и дате
     public List Client_serv_emp_date (int id_service, int id_emp, Date date_of_beginning, Date date_of_end)
     {
@@ -81,7 +55,6 @@ public class Client_serv {
         }
         return clients;
     }
-
     public boolean ClientEqual(Client new_client)
     {
         Client_serv serv = new Client_serv();
@@ -92,7 +65,5 @@ public class Client_serv {
                 (new_client.getSurname().equals(check_client.getSurname())) &
                 (new_client.getE_mail().equals(check_client.getE_mail())) &
                 (new_client.getPhone().equals(check_client.getPhone())));
-
     }
-
 }

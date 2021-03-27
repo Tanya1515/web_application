@@ -20,7 +20,6 @@ public class DAO_employee {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
@@ -31,7 +30,6 @@ public class DAO_employee {
             return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Employee.class, id);
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return null;
         }
     }
@@ -47,7 +45,6 @@ public class DAO_employee {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
@@ -63,7 +60,6 @@ public class DAO_employee {
             return true;
         }
         catch (Exception e) {
-            System.out.println("Исключение!" + e);
             return false;
         }
     }
