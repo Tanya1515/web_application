@@ -70,8 +70,12 @@ public class Client_servTest {
         Contract_serv serv = new Contract_serv();
         Client_serv serv_client = new Client_serv();
 
+
         Contract new_C = new Contract (9,1,7, java.sql.Date.valueOf("2014-01-01"), java.sql.Date.valueOf("2014-04-01"));
+        Contract new_с = new Contract (9,1,12, java.sql.Date.valueOf("2014-01-01"), java.sql.Date.valueOf("2014-04-01"));
         serv.CreateContract(new_C);
+        serv.CreateContract(new_с);
+
 
         List<Client> clients = serv_client.Client_serv_emp_date(new_C.getId_service(), new_C.getId_employee(), java.sql.Date.valueOf("2011-10-01"), java.sql.Date.valueOf("2015-04-01"));
         for (Client c:clients)
@@ -79,5 +83,6 @@ public class Client_servTest {
             Assert.assertEquals(serv_client.ClientEqual(c), true);
         }
         serv.DeleteContract(new_C.getId_contract());
+        serv.DeleteContract(new_с.getId_contract());
     }
 }

@@ -35,7 +35,7 @@ public class Contract_serv {
        List <Contract> contracts = new ArrayList<Contract>();
         for (Contract cont : l)
         {
-            if ((cont.getId_employee() == id_employee) & (cont.getId_service() == id_service) & (date_of_beginning.after(cont.getDate_of_begining())) & (date_of_end.before(cont.getDate_of_end())))
+            if ((cont.getId_employee() == id_employee) & (cont.getId_service() == id_service) & (date_of_beginning.before(cont.getDate_of_begining())) & (date_of_end.after(cont.getDate_of_end())))
             {
                 contracts.add(cont);
             }
@@ -50,7 +50,7 @@ public class Contract_serv {
         List <Contract> contracts = new ArrayList<Contract>();
         for (Contract cont : l)
         {
-            if ((cont.getId_client() == id_client) & (cont.getId_service() == id_service) & (date_of_beginning.after(cont.getDate_of_begining())) & (date_of_end.before(cont.getDate_of_end())))
+            if ((cont.getId_client() == id_client) & (cont.getId_service() == id_service) & (date_of_beginning.before(cont.getDate_of_begining())) & (date_of_end.after(cont.getDate_of_end())))
             {
                 contracts.add(cont);
             }
