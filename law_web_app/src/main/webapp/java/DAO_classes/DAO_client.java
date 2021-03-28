@@ -9,7 +9,7 @@ public class DAO_client {
 
     //удаление клиента
     public boolean delete(Client client) {
-        try {
+        if (findById(client.getId_client()) != null){
             Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
             Transaction tx1 = session.beginTransaction();
             session.delete(client);
@@ -17,19 +17,12 @@ public class DAO_client {
             session.close();
             return true;
         }
-        catch (Exception e) {
-            return false;
-        }
+        return false;
     }
 
-    //чтение информации о клиенте по id
+        //чтение информации о клиенте по id
     public Client findById(int id) {
-        try {
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Client.class, id);
-        }
-        catch (Exception e) {
-            return null;
-        }
     }
 
     //создание нового клиента
@@ -43,10 +36,10 @@ public class DAO_client {
             return true;
         }
         catch (Exception e) {
-            return false;
-        }
-    }
+            return false; }
+     }
     //редактирование информации о клиенте
+
     public boolean update(Client client) {
         try {
             Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
@@ -55,10 +48,8 @@ public class DAO_client {
             tx1.commit();
             session.close();
             return true;
-        }
+         }
         catch (Exception e) {
-            return false;
-        }
+            return false; }
     }
-}
-
+ }

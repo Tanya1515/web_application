@@ -11,7 +11,7 @@ public class DAO_contract {
 
     //удаление контракта
     public boolean delete(Contract cont) {
-        try {
+        if (findById(cont.getId_contract()) != null){
             Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
             Transaction tx1 = session.beginTransaction();
             session.delete(cont);
@@ -19,9 +19,7 @@ public class DAO_contract {
             session.close();
             return true;
         }
-        catch (Exception e) {
             return false;
-        }
     }
 
     // чтение информации о контракте по id

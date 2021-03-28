@@ -11,7 +11,7 @@ public class DAO_employee {
 
     //удаление сотрудника
     public boolean delete(Employee emp) {
-        try {
+        if (findById(emp.getId_employee()) != null) {
             Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
             Transaction tx1 = session.beginTransaction();
             session.delete(emp);
@@ -19,19 +19,12 @@ public class DAO_employee {
             session.close();
             return true;
         }
-        catch (Exception e) {
             return false;
-        }
     }
 
     //чтение информации о сотруднике по id
     public Employee findById(int id) {
-        try {
             return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Employee.class, id);
-        }
-        catch (Exception e) {
-            return null;
-        }
     }
 
     //создание нового сотрудника
