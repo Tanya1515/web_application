@@ -1,10 +1,10 @@
 package DAO_classes;
 
-import org.testng.annotations.Test;
-import org.testng.Assert;
 import entities.Contract;
-import java.util.List;
+import org.testng.Assert;
+import org.testng.annotations.Test;
 
+import java.util.List;
 
 import static org.testng.Assert.*;
 
