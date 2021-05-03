@@ -5,8 +5,6 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import service.Client_serv;
 
-import static org.testng.Assert.*;
-
 public class DAO_clientTest {
 
     @Test
@@ -34,7 +32,7 @@ public class DAO_clientTest {
         Client new_client = new Client("Tanya", "Ozerova", "89636337000", "yzova@gmail.com");
         dao_cl.save(new_client);
 
-        Assert.assertNotNull(dao_cl.findById(new_client.getId_client()));
+        Assert.assertNotNull(dao_cl.findById(new_client.getId()));
         dao_cl.delete(new_client);
     }
 
@@ -45,7 +43,7 @@ public class DAO_clientTest {
         dao_cl.save(new_client);
 
         dao_cl.delete(new_client);
-        Assert.assertEquals(dao_cl.findById(new_client.getId_client()), null);
+        Assert.assertEquals(dao_cl.findById(new_client.getId()), null);
     }
 
     @Test

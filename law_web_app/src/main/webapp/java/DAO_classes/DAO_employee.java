@@ -6,6 +6,8 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
 
+import java.util.List;
+
 
 public class DAO_employee {
 
@@ -40,6 +42,13 @@ public class DAO_employee {
         catch (Exception e) {
             return false;
         }
+    }
+
+    public List ListEmp ()
+    {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List <Employee> l = session.createQuery("from Employee").list();
+        return l;
     }
 
     //редактирование информации о сотруднике

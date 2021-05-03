@@ -5,11 +5,13 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 import utils.HibernateSessionFactoryUtil;
 
+import java.util.List;
+
 public class DAO_client {
 
     //удаление клиента
     public boolean delete(Client client) {
-        if (findById(client.getId_client()) != null){
+        if (findById(client.getId()) != null){
             Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
             Transaction tx1 = session.beginTransaction();
             session.delete(client);
@@ -20,8 +22,16 @@ public class DAO_client {
         return false;
     }
 
-        //чтение информации о клиенте по id
+    public List ListClient ()
+    {
+        Session session = HibernateSessionFactoryUtil.getSessionFactory().openSession();
+        List <Client> l = session.createQuery("from Client").list();
+        return l;
+    }
+
+    //чтение информации о клиенте по id
     public Client findById(int id) {
+
         return HibernateSessionFactoryUtil.getSessionFactory().openSession().get(Client.class, id);
     }
 

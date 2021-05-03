@@ -14,12 +14,12 @@ public class Client_servTest {
     public void testFindClient() {
         Client_serv serv = new Client_serv();
 
-        Client new_client = new Client("Tanya", "Ozerova", "89636397039", "tanyaozerova@gmail.com");
+        Client new_client = new Client("Tanya", "Ozerova", "33333333333", "tany444@gmail.com");
         serv.CreateClient(new_client);
 
-        Client check_contract = serv.findClient(new_client.getId_client());
-        Assert.assertEquals(new_client.getId_client(), check_contract.getId_client());
-        serv.DeleteClient(new_client.getId_client());
+        Client check_contract = serv.findClient(new_client.getId());
+        Assert.assertEquals(new_client.getId(), check_contract.getId());
+        serv.DeleteClient(new_client.getId());
     }
 
     @Test
@@ -32,9 +32,9 @@ public class Client_servTest {
 
         Assert.assertEquals(serv.ClientEqual(new_client), true);
 
-        serv.DeleteClient(new_client.getId_client());
+        serv.DeleteClient(new_client.getId());
 
-        Assert.assertNull(serv.findClient(new_client.getId_client()));
+        Assert.assertNull(serv.findClient(new_client.getId()));
     }
 
     @Test
@@ -46,7 +46,7 @@ public class Client_servTest {
         serv.CreateClient(new_client);
 
         Assert.assertEquals(serv.ClientEqual(new_client), true);
-        serv.DeleteClient(new_client.getId_client());
+        serv.DeleteClient(new_client.getId());
     }
 
     @Test
@@ -59,9 +59,9 @@ public class Client_servTest {
 
         Assert.assertEquals(serv.ClientEqual(new_client), true);
 
-        serv.UpdateClient(new_client.getId_client(), "Maria", "Tumanova", "89036554673", "tanyaozerova1318@gmail.com");
+        serv.UpdateClient(new_client.getId(), "Maria", "Tumanova", "89036554673", "tanyaozerova1318@gmail.com");
         Assert.assertEquals(serv.ClientEqual(new_client), false);
-        serv.DeleteClient(new_client.getId_client());
+        serv.DeleteClient(new_client.getId());
     }
 
     @Test

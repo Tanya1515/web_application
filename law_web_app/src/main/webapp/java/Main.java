@@ -1,23 +1,16 @@
-import DAO_classes.DAO_contract;
-import java.util.List;
+import DAO_classes.DAO_client;
 import entities.Client;
-import entities.Employee;
-import entities.Contract;
-
-import service.Client_serv;
-import service.Employee_serv;
-import service.Contract_serv;
 
 import java.sql.SQLException;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
 
-        Employee_serv serv = new Employee_serv();
+        //Employee_serv serv = new Employee_serv();
 
-        Employee new_emp = new Employee("Tanya", "Ozerova", "89536397040", "tanyaozerova13184@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2", "associate", 2);
-        serv.CreateEmployee(new_emp);
-        System.out.print(new_emp.getId_employee());
+        //Employee new_emp = new Employee("Tanya", "Ozerova", "89536397040", "tanyaozerova13184@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2", "associate", 2);
+        //serv.CreateEmployee(new_emp);
+        //System.out.print(new_emp.getId_employee());
 
        //Contract contract_create = new Contract(17, 5, 1, java.sql.Date.valueOf("2011-01-01"), java.sql.Date.valueOf("2012-01-01"));
 
@@ -39,7 +32,9 @@ public class Main {
 //        System.out.print(serv.CreateEmployee(emp_create));
 
         //System.out.print(serv.UpdateEmployee(15, "Maria", "Tumanova", "89036554673", "tanyaozerova1318@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2", "associate", 2));
-
+        DAO_client dao_client = new DAO_client();
+        Client c = dao_client.findById(12);
+        System.out.print(c.getName()) ;
 //        Client_serv serv = new Client_serv();
 //        List<Client> l = serv.Client_serv_emp_date(7,3, java.sql.Date.valueOf("2011-10-01"), java.sql.Date.valueOf("2011-04-01"));
 //        for (Client c :l)

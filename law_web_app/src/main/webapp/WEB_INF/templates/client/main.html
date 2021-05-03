@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Getting Started: Serving Web Content</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<p th:text="'Привет, это страница для клиентов!'" />
+<div th:each="client : ${clients}">
+  <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName()}">user </a>
+</div>
+<a href = "/client/new"> Добавить клиента </a>
+</body>
+</html>

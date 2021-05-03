@@ -1,7 +1,6 @@
 package entities;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "Client")
@@ -9,7 +8,8 @@ public class Client {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_client;
+    @Column(name="id_client")
+    private int id;
 
     private String name;
     private String surname;
@@ -26,9 +26,11 @@ public class Client {
         this.e_mail = e_mail;
     }
 
-    public int getId_client() {
-        return id_client;
+    public int getId() {
+        return id;
     }
+
+    public void setId(int id) {this.id = id;}
 
     public String getName() {
         return name;

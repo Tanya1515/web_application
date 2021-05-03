@@ -3,11 +3,13 @@ package service;
 import entities.Client;
 import DAO_classes.DAO_client;
 import entities.Contract;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
+@Component
 public class Client_serv {
 
     private DAO_client dao_cl = new DAO_client();
@@ -58,9 +60,9 @@ public class Client_serv {
     public boolean ClientEqual(Client new_client)
     {
         Client_serv serv = new Client_serv();
-        Client check_client = serv.findClient(new_client.getId_client());
+        Client check_client = serv.findClient(new_client.getId());
 
-        return ((new_client.getId_client() == check_client.getId_client()) &
+        return ((new_client.getId() == check_client.getId()) &
                 (new_client.getName().equals(check_client.getName())) &
                 (new_client.getSurname().equals(check_client.getSurname())) &
                 (new_client.getE_mail().equals(check_client.getE_mail())) &
