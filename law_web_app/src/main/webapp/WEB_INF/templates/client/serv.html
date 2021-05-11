@@ -5,8 +5,18 @@
     <title>Title</title>
 </head>
 <body>
-Список услуг для данного клиента
-<a href = "/client/main"> Список клиентов </a>
-<a href = "/greeting"> Главная страница </a>
+List of services for <p th:text="${ client.getName() + ' ' + client.getSurname()}">VALUE1</p>
+
+<div th:each="serv : ${services}">
+    <a th:text="${serv.getName_of_service() + ' ' + serv.getCost_of_service()}">serv </a>
+</div>
+<br/>
+<form action= "/client/main" >
+    <p><input type="submit" value="All clients"></p>
+</form>
+
+<form action= "/greeting" >
+    <p><input type="submit" value="Main Page"></p>
+</form>
 </body>
 </html>

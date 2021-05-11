@@ -5,9 +5,57 @@
     <title>Title</title>
 </head>
 <body>
-Персональная информация сотрудника
-<a href = "/emp/save"> Сохранить </a>
-<a href = "/emp/delete"> Удалить </a>
-<a href = "/emp/serv"> Список услуг </a>
+
+<form th:method="POST" th:action="@{/emp/{id}(id=${emp.getId_employee()})}" th:object="${emp}">
+
+    <label for="name"> Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <br/>
+
+    <label for="surname">Surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+
+    <br/>
+
+    <label for="e_mail">E-mail: </label>
+    <input type="text" th:field="*{e_mail}" id="e_mail"/>
+
+    <br/>
+
+    <label for="phone">Phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+
+    <br/>
+
+    <label for="education">Education: </label>
+    <input type="text" th:field="*{education}" id="education"/>
+
+    <br/>
+
+    <label for="home_address">Home address: </label>
+    <input type="text" th:field="*{home_address}" id="home_address"/>
+
+    <br/>
+
+    <label for="position">Position: </label>
+    <input type="text" th:field="*{position}" id="position"/>
+
+    <br/>
+
+    <label for="work_experience">Work Experience: </label>
+    <input type="text" th:field="*{work_experience}" id="work_experience"/>
+
+    <br/>
+    <input type="submit" value="Save"/>
+</form>
+
+<form th:action= "@{/emp/del/{id}(id=${emp.getId_employee()})}" >
+    <p><input type="submit" value="Delete"></p>
+</form>
+
+<form th:action= "@{/emp/serv/{id}(id=${emp.getId_employee()})}" >
+    <p><input type="submit" value="List of services"></p>
+</form>
 </body>
 </html>

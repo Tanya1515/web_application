@@ -16,7 +16,7 @@
 
         <mapping class="entities.Client" />
         <mapping class="entities.Contract" />
-        <!--mapping class="entities.Service" /-->
+        <mapping class="entities.Service" />
         <mapping class="entities.Employee" />
 
     </session-factory>

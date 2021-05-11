@@ -5,13 +5,37 @@
     <title>Title</title>
 </head>
 <body>
-<p th:text="${person.getName()}">VALUE1</p>
-<p th:text="${person.getSurname()}">VALUE2</p>
-<p th:text="${person.getPhone()}">VALUE3</p>
-<p th:text="${person.getE_mail()}">VALUE4</p>
+<form th:method="POST" th:action="@{/client/{id}(id=${client.getId()})}" th:object="${client}">
 
-<a href = "/client/save"> Сохранить </a>
-<a href = "/client/delete"> Удалить </a>
-<a href = "/client/serv"> Список услуг </a>
+    <label for="name"> Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <br/>
+
+    <label for="surname">Surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+
+    <br/>
+
+    <label for="e_mail">E-mail: </label>
+    <input type="text" th:field="*{e_mail}" id="e_mail"/>
+
+    <br/>
+
+    <label for="phone">Phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+
+    <br/>
+    <input type="submit" value="Save"/>
+</form>
+
+<form th:action= "@{/client/del/{id}(id=${client.getId()})}" >
+    <p><input type="submit" value="Delete"></p>
+</form>
+
+<form th:action= "@{/client/serv/{id}(id=${client.getId()})}" >
+    <p><input type="submit" value="List of services"></p>
+</form>
+
 </body>
 </html>

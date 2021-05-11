@@ -5,8 +5,56 @@
     <title>Title</title>
 </head>
 <body>
-Страница для регистрации нового сотрудника
-<a href = "/emp/new_save"> Сохранить </a>
-<a href = "/emp/main"> Отменить </a>
+<form th:method="POST" th:action="@{/emp}" th:object="${emp}">
+
+    <label for="name"> Name: </label>
+    <input type="text" th:field="*{name}" id="name"/>
+
+    <br/>
+
+    <label for="surname">Surname: </label>
+    <input type="text" th:field="*{surname}" id="surname"/>
+
+    <br/>
+
+    <label for="e_mail">E-mail: </label>
+    <input type="text" th:field="*{e_mail}" id="e_mail"/>
+
+    <br/>
+
+    <label for="phone">Phone: </label>
+    <input type="text" th:field="*{phone}" id="phone"/>
+
+    <br/>
+
+    <label for="education">Education: </label>
+    <input type="text" th:field="*{education}" id="education"/>
+
+    <br/>
+
+    <label for="home_address">Home address: </label>
+    <input type="text" th:field="*{home_address}" id="home_address"/>
+
+    <br/>
+
+    <label for="position">Position: </label>
+    <input type="text" th:field="*{position}" id="position"/>
+
+    <br/>
+
+    <label for="work_experience">Work Experience: </label>
+    <input type="text" th:field="*{work_experience}" id="work_experience"/>
+
+    <br/>
+    <input type="submit" value="Create"/>
+</form>
+
+<form action= "/emp/main" >
+    <p><input type="submit" value="Discard"></p>
+</form>
+
+<form action= "/greeting" >
+    <p><input type="submit" value="Main Page"></p>
+</form>
 </body>
 </html>

@@ -43,6 +43,36 @@ public class Contract_serv {
         return contracts;
     }
 
+    //список контрактов по клиенту
+    public List Contract_client ( int id_client)
+    {
+        List<Contract> l = dao_cont.ListContract ();
+        List <Contract> contracts = new ArrayList<Contract>();
+        for (Contract cont : l)
+        {
+            if (cont.getId_client() == id_client)
+            {
+                contracts.add(cont);
+            }
+        }
+        return contracts;
+    }
+
+    //список контрактов по сотруднику
+    public List Contract_emp ( int id_emp)
+    {
+        List<Contract> l = dao_cont.ListContract ();
+        List <Contract> contracts = new ArrayList<Contract>();
+        for (Contract cont : l)
+        {
+            if (cont.getId_employee() == id_emp)
+            {
+                contracts.add(cont);
+            }
+        }
+        return contracts;
+    }
+
     //список контрактов по услуге, клиенту и дате
     public List Contract_serv_client_date (int id_service, int id_client, Date date_of_beginning, Date date_of_end)
     {

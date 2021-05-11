@@ -6,7 +6,11 @@
 </head>
 <body>
 <p th:text="'Привет, это страница для сотрудников!'" />
-<a href = "/emp/person"> Иван Иванович Иванов </a>
-<a href = "/emp/new"> Добавить сотрудника </a>
+<div th:each="emp : ${emps}">
+  <a th:href="@{/emp/{id}(id=${emp.getId_employee()})}" th:text="${emp.getName() + ' ' + emp.getSurname()}"  </a>
+</div>
+<form action= "/emp/new" >
+  <p><input type="submit" value="Add employee"></p>
+</form>
 </body>
 </html>

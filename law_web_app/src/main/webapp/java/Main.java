@@ -1,6 +1,3 @@
-import DAO_classes.DAO_client;
-import entities.Client;
-
 import java.sql.SQLException;
 
 public class Main {
@@ -22,8 +19,9 @@ public class Main {
 //        {
 //            System.out.print(emp.getName());
 //        }
-
-//        Employee emp_1 = serv.findEmployee(1);
+//        DAO_employee dao_emp = new DAO_employee();
+       //Employee emp_1 = dao_emp.findById(124);
+       //dao_emp.delete(emp_1);
 //        System.out.print(emp_1.getName());
 //
         //System.out.print(serv.DeleteEmployee(10));
@@ -32,9 +30,16 @@ public class Main {
 //        System.out.print(serv.CreateEmployee(emp_create));
 
         //System.out.print(serv.UpdateEmployee(15, "Maria", "Tumanova", "89036554673", "tanyaozerova1318@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2", "associate", 2));
-        DAO_client dao_client = new DAO_client();
-        Client c = dao_client.findById(12);
-        System.out.print(c.getName()) ;
+        //DAO_client dao_client = new DAO_client();
+        //Client c = dao_client.findById(12);
+        //System.out.print(c.getName()) ;
+        //Contract_serv cont = new Contract_serv();
+        //Service_serv serv = new Service_serv();
+        //List<Service> services = serv.Service_client_emp(cont.Contract_client(7));
+        //for ( Service emp :services)
+        //{
+          //  System.out.print(emp.getName_of_service());
+        //}
 //        Client_serv serv = new Client_serv();
 //        List<Client> l = serv.Client_serv_emp_date(7,3, java.sql.Date.valueOf("2011-10-01"), java.sql.Date.valueOf("2011-04-01"));
 //        for (Client c :l)

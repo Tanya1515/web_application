@@ -5,10 +5,38 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Привет, это страница для клиентов!'" />
+
+<form action="select1.php" method="post">
+  <p><select name="emps">
+    <option>Выберите сотрудника</option>
+    <div th:each="emp : ${emps}">
+    <option th:text="${emp.getName() + ' ' + emp.getSurname()}">emp</option>
+    </div>
+  </select></p>
+
+  <p><select name="data">
+    <option>Выберите срок договора</option>
+    <div th:each="c : ${contracts}">
+    <option th:text="${c.getDate_of_begining() + ' ' + '-' + ' ' + c.getDate_of_end()}">data</option>
+    </div>
+  </select></p>
+
+  <p><select name="serv">
+    <option>Выберите тип услуги</option>
+  <div th:each="serv : ${services}">
+    <option th:text="${serv.getName_of_service()}">serv</option>
+  </div>
+  </select></p>
+
+  <p><input type="submit" value="Send"></p>
+</form>
+
 <div th:each="client : ${clients}">
-  <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName()}">user </a>
+  <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName() + ' ' + client.getSurname()}">user </a>
 </div>
-<a href = "/client/new"> Добавить клиента </a>
+<br/>
+<form action= "/client/new" >
+  <p><input type="submit" value="Add client"></p>
+</form>
 </body>
 </html>

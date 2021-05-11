@@ -9,6 +9,7 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_employee")
     private int id_employee;
 
     private String name;
@@ -38,6 +39,8 @@ public class Employee {
     public int getId_employee() {
         return id_employee;
     }
+
+    public void setId_employee(int id) { this.id_employee = id; }
 
     public String getName() {
         return name;

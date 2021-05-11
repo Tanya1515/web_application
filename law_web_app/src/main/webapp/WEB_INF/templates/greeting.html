@@ -5,10 +5,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Hello, ' + ${name} + '!'" />
+<p th:text="'Welcome to Lawyer of Devil !'" />
 
-<a href = "/client/main"> Клиенты </a>
-<a href = "/emp/main"> Сотрудники </a>
-<a href = "/reg/main"> Регистрация договора </a>
+<form action= "/client/main" >
+  <p><input type="submit" value="Clients"></p>
+</form>
+
+<form action= "/emp/main" >
+  <p><input type="submit" value="Employees"></p>
+</form>
+
+<form action= "/reg/main" >
+  <p><input type="submit" value="New contract"></p>
+</form>
+
 </body>
 </html>

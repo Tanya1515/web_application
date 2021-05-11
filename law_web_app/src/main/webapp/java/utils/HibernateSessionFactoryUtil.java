@@ -3,8 +3,7 @@ package utils;
 import entities.Client;
 import entities.Contract;
 import entities.Employee;
-//import entities.Service;
-
+import entities.Service;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -23,6 +22,7 @@ public class HibernateSessionFactoryUtil {
                 configuration.addAnnotatedClass(Client.class);
                 configuration.addAnnotatedClass(Employee.class);
                 configuration.addAnnotatedClass(Contract.class);
+                configuration.addAnnotatedClass(Service.class);
                 StandardServiceRegistryBuilder builder = new StandardServiceRegistryBuilder().applySettings(configuration.getProperties());
                 sessionFactory = configuration.buildSessionFactory(builder.build());
 

@@ -9,6 +9,7 @@ public class Contract {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name="id_contract")
     private int id_contract;
 
     private int id_employee;
@@ -32,6 +33,8 @@ public class Contract {
     public int getId_contract() {
         return id_contract;
     }
+
+    public void setId_contract(int id) {this.id_contract= id; }
 
     public int getId_employee() {
         return id_employee;
