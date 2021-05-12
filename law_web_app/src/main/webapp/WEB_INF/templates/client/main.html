@@ -6,29 +6,26 @@
 </head>
 <body>
 
-<form action="select1.php" method="post">
-  <p><select name="emps">
-    <option>Выберите сотрудника</option>
+<form action="/client/select" method="post">
+  <p><select name="emp">
+    <option>Choose employee</option>
     <div th:each="emp : ${emps}">
-    <option th:text="${emp.getName() + ' ' + emp.getSurname()}">emp</option>
-    </div>
-  </select></p>
-
-  <p><select name="data">
-    <option>Выберите срок договора</option>
-    <div th:each="c : ${contracts}">
-    <option th:text="${c.getDate_of_begining() + ' ' + '-' + ' ' + c.getDate_of_end()}">data</option>
+    <option th:value= "${emp.getId_employee()}" th:text="${emp.getName() + ' ' + emp.getSurname()}">emp</option>
     </div>
   </select></p>
 
   <p><select name="serv">
-    <option>Выберите тип услуги</option>
+    <option>Choose type of service</option>
   <div th:each="serv : ${services}">
-    <option th:text="${serv.getName_of_service()}">serv</option>
+    <option th:value= "${serv.getId_service()}" th:text="${serv.getName_of_service()}">serv</option>
   </div>
   </select></p>
 
-  <p><input type="submit" value="Send"></p>
+  <p>Choose the date of begining: <input type="date" name="date_of_begin">
+
+  <p>Choose the date of end: <input type="date" name="date_of_end">
+
+  <p><input type="submit" value="Select"></p>
 </form>
 
 <div th:each="client : ${clients}">
@@ -38,5 +35,10 @@
 <form action= "/client/new" >
   <p><input type="submit" value="Add client"></p>
 </form>
+
+<form action= "/greeting" >
+  <p><input type="submit" value="Main Page"></p>
+</form>
+
 </body>
 </html>

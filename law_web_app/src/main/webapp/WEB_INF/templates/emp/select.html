@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="emp : ${emps}">
+    <a th:href="@{/emp/{id}(id=${emp.getId_employee()})}" th:text="${emp.getName() + ' ' + emp.getSurname()}"  </a>
+</div>
+
+<form action= "/greeting" >
+  <p><input type="submit" value="Main Page"></p>
+</form>
+
+<form action= "/client/main" >
+  <p><input type="submit" value="All clients"></p>
+</form>
+
+</body>
+</html>

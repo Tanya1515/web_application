@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<div th:each="client : ${clients}">
+    <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName() + ' ' + client.getSurname()}">user </a>
+</div>
+
+<form action= "/greeting" >
+    <p><input type="submit" value="Main Page"></p>
+</form>
+
+<form action= "/client/main" >
+    <p><input type="submit" value="All clients"></p>
+</form>
+
+</body>
+</html>

@@ -8,8 +8,13 @@ import entities.Client;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import service.Client_serv;
 import service.Contract_serv;
 import service.Service_serv;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/client")
@@ -21,6 +26,8 @@ public class ClientController {
     DAO_service dao_serv = new DAO_service();
     Contract_serv cont = new Contract_serv();
     Service_serv serv = new Service_serv();
+    Client_serv cl = new Client_serv();
+
 
     @GetMapping("/main") //список всех клиентов + поля для выбора
     public String Client_Main(Model model)
@@ -41,7 +48,7 @@ public class ClientController {
     @PostMapping()
     public String CreateClient(@ModelAttribute("client") Client client) {
         dao_client.save(client);
-        return "client/new_save";
+        return "redirect:/client/main";
     }
 
     @GetMapping("/{id}")
@@ -55,14 +62,14 @@ public class ClientController {
     public String UpdateClient(@ModelAttribute("client") Client client)
     {
         dao_client.update(client);
-        return "client/save";
+        return "redirect:/client/main";
     }
 
     @GetMapping("del/{id}")
     public String DeleteClient(@ModelAttribute("client") Client client)
     {
         dao_client.delete(client);
-        return "client/delete";
+        return "redirect:/client/main";
     }
 
     @GetMapping("serv/{id}")
@@ -72,4 +79,19 @@ public class ClientController {
         model.addAttribute("client", dao_client.findById(id));
         return "client/serv";
     }
+
+    @PostMapping("/select")
+    public String SelectClient (@RequestParam(name = "emp") int id_emp,
+                                @RequestParam(name = "serv") int id_serv,
+                                @RequestParam(name = "date_of_begin") String date_of_begin,
+                                @RequestParam(name = "date_of_end") String date_of_end,
+                                Model model)
+            throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_of_beg = format.parse(date_of_begin);
+        Date date_of_e = format.parse(date_of_end);
+        model.addAttribute("clients", cl.Client_serv_emp_date(id_serv, id_emp, date_of_beg, date_of_e));
+        return "client/select";
+    }
 }
+

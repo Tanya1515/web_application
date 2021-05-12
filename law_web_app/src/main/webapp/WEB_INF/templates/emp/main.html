@@ -5,12 +5,40 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<p th:text="'Привет, это страница для сотрудников!'" />
+
+<form action="select1.php" method="post">
+  <p><select name="clients">
+    <option>Choose client</option>
+  <div th:each="client : ${clients}">
+    <option th:text="${client.getName() + ' ' + client.getSurname()}">client</option>
+  </div>
+  </select></p>
+
+  <p><select name="serv">
+    <option>Choose type of service</option>
+  <div th:each="serv : ${services}">
+    <option th:text="${serv.getName_of_service()}">serv</option>
+  </div>
+  </select></p>
+
+  <p>Choose the date of begining: <input type="date" name="date_of_begin">
+
+  <p>Choose the date of end: <input type="date" name="date_of_end">
+
+  <p><input type="submit" value="Select"></p>
+</form>
+
+
 <div th:each="emp : ${emps}">
   <a th:href="@{/emp/{id}(id=${emp.getId_employee()})}" th:text="${emp.getName() + ' ' + emp.getSurname()}"  </a>
 </div>
 <form action= "/emp/new" >
   <p><input type="submit" value="Add employee"></p>
 </form>
+
+<form action= "/greeting" >
+  <p><input type="submit" value="Main Page"></p>
+</form>
+
 </body>
 </html>

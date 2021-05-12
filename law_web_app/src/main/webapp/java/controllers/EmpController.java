@@ -9,7 +9,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import service.Contract_serv;
+import service.Employee_serv;
 import service.Service_serv;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Controller
 @RequestMapping("/emp")
@@ -21,10 +26,15 @@ public class EmpController {
     DAO_service dao_serv = new DAO_service();
     Contract_serv cont = new Contract_serv();
     Service_serv serv = new Service_serv();
+    Employee_serv em = new Employee_serv();
 
     @GetMapping("/main")
     public String Emp_Main(Model model)
     {
+        model.addAttribute("clients", dao_client.ListClient());
+        model.addAttribute("emps", dao_emp.ListEmp());
+        model.addAttribute("contracts", dao_c.ListContract());
+        model.addAttribute("services", dao_serv.ListServices());
         model.addAttribute("emps", dao_emp.ListEmp());
         return "emp/main";
     }
@@ -32,7 +42,6 @@ public class EmpController {
     @GetMapping("/new")
     public String Emp_New(@ModelAttribute("emp") Employee Emp)
     {
-
         return "emp/new";
     }
 
@@ -41,14 +50,14 @@ public class EmpController {
     {
         emp.setId_employee(id);
         dao_emp.update(emp);
-        return "emp/save";
+        return "redirect:/emp/main";
     }
 
     @PostMapping()
     public String CreateEmp(@ModelAttribute("emp") Employee Emp) {
 
         dao_emp.save(Emp);
-        return "emp/new_save";
+        return "redirect:/emp/main";
     }
 
     @GetMapping("/{id}")
@@ -63,7 +72,7 @@ public class EmpController {
     {
         emp.setId_employee(id);
         dao_emp.delete(emp);
-        return "emp/delete";
+        return "redirect:/emp/main";
     }
 
     @GetMapping("serv/{id}")
@@ -72,6 +81,20 @@ public class EmpController {
         model.addAttribute ("services", serv.Service_client_emp(cont.Contract_emp(id)));
         model.addAttribute("emp", dao_emp.findById(id));
         return "emp/serv";
+    }
+
+    @PostMapping("/select")
+    public String SelectClient (@RequestParam(name = "client") int id_cl,
+                                @RequestParam(name = "serv") int id_serv,
+                                @RequestParam(name = "date_of_begin") String date_of_begin,
+                                @RequestParam(name = "date_of_end") String date_of_end,
+                                Model model)
+            throws ParseException {
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        Date date_of_beg = format.parse(date_of_begin);
+        Date date_of_e = format.parse(date_of_end);
+        model.addAttribute("emps", em.Emp_serv_client_date(id_serv, id_cl, date_of_beg, date_of_e));
+        return "client/select";
     }
 
 }
