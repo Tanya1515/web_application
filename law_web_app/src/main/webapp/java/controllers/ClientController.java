@@ -42,11 +42,38 @@ public class ClientController {
     @GetMapping("/new")
     public String Client_New(@ModelAttribute("client") Client client)
     {
+
         return "client/new";
     }
 
+    //проверка на ошибку
     @PostMapping()
-    public String CreateClient(@ModelAttribute("client") Client client) {
+    public String CreateClient(@ModelAttribute("client") Client client, Model model) {
+        String error;
+        if (client.getName() == "")
+        {
+            error = "Please enter name of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getSurname() == "")
+        {
+            error = "Please enter surname of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getE_mail() == "")
+        {
+            error = "Please enter E_mail of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getPhone() == "")
+        {
+            error = "Please enter phone of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
         dao_client.save(client);
         return "redirect:/client/main";
     }
@@ -58,9 +85,35 @@ public class ClientController {
         return "client/person";
     }
 
+    //проверка на ошибку
     @PostMapping("/{id}")
-    public String UpdateClient(@ModelAttribute("client") Client client)
+    public String UpdateClient(@ModelAttribute("client") Client client, Model model)
     {
+        String error;
+        if (client.getName() == "")
+        {
+            error = "Please enter name of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getSurname() == "")
+        {
+            error = "Please enter surname of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getE_mail() == "")
+        {
+            error = "Please enter E_mail of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (client.getPhone() == "")
+        {
+            error = "Please enter phone of the client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
         dao_client.update(client);
         return "redirect:/client/main";
     }
@@ -80,6 +133,7 @@ public class ClientController {
         return "client/serv";
     }
 
+    //проверка на ошибку
     @PostMapping("/select")
     public String SelectClient (@RequestParam(name = "emp") int id_emp,
                                 @RequestParam(name = "serv") int id_serv,
@@ -87,11 +141,37 @@ public class ClientController {
                                 @RequestParam(name = "date_of_end") String date_of_end,
                                 Model model)
             throws ParseException {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-        Date date_of_beg = format.parse(date_of_begin);
-        Date date_of_e = format.parse(date_of_end);
-        model.addAttribute("clients", cl.Client_serv_emp_date(id_serv, id_emp, date_of_beg, date_of_e));
-        return "client/select";
-    }
+        String error;
+        if (id_serv == -1)
+        {
+            error = "Please select a service!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (id_emp == -1)
+        {
+            error = "Please select an employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (date_of_begin == null)
+        {
+            error = "Please select date of beginning of the contract!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (date_of_end == null)
+        {
+            error = "Please select date of end of the contract!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+            SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+            Date date_of_beg = format.parse(date_of_begin);
+            Date date_of_e = format.parse(date_of_end);
+            model.addAttribute("clients", cl.Client_serv_emp_date(id_serv, id_emp, date_of_beg, date_of_e));
+            return "client/select";
+        }
+
 }
 

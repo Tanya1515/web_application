@@ -8,14 +8,14 @@
 
 <form action="/client/select" method="post">
   <p><select name="emp">
-    <option>Choose employee</option>
+    <option value="-1" > Choose employee</option>
     <div th:each="emp : ${emps}">
     <option th:value= "${emp.getId_employee()}" th:text="${emp.getName() + ' ' + emp.getSurname()}">emp</option>
     </div>
   </select></p>
 
   <p><select name="serv">
-    <option>Choose type of service</option>
+    <option value="-1" > Choose type of service</option>
   <div th:each="serv : ${services}">
     <option th:value= "${serv.getId_service()}" th:text="${serv.getName_of_service()}">serv</option>
   </div>

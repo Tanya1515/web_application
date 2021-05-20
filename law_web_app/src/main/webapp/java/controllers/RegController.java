@@ -34,6 +34,7 @@ public class RegController {
         return "reg/main";
     }
 
+    //проверка на ошибку
     @PostMapping ("/save")
     public String Reg_Save(
             @RequestParam(name = "emp") int id_emp,
@@ -42,6 +43,16 @@ public class RegController {
             @RequestParam(name = "date_of_begin") String date_of_begin,
             @RequestParam(name = "date_of_end") String date_of_end)
             throws ParseException {
+        if (id_client == -1)
+            return "Error";
+        if (id_serv == -1)
+            return "Error";
+        if (id_emp == -1)
+            return "Error";
+        if (date_of_begin == null)
+            return "Error";
+        if (date_of_end == null)
+            return "Error";
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date_of_beg = format.parse(date_of_begin);
         Date date_of_e = format.parse(date_of_end);

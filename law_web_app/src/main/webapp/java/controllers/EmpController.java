@@ -45,17 +45,116 @@ public class EmpController {
         return "emp/new";
     }
 
+    //проерка на ошибку
     @PostMapping("/{id}")
-    public String UpdateEmp(@ModelAttribute("emp") Employee emp, @PathVariable int id)
+    public String UpdateEmp(@ModelAttribute("emp") Employee Emp, @PathVariable int id, Model model)
     {
-        emp.setId_employee(id);
-        dao_emp.update(emp);
+        String error;
+        if (Emp.getName() == "")
+        {
+            error = "Please enter name of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getSurname() == "")
+        {
+            error = "Please enter surname of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getE_mail() == "")
+        {
+            error = "Please enter E_mail of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getPhone() == "")
+        {
+            error = "Please enter phone of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getEducation() == "")
+        {
+            error = "Please enter education of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getHome_address() == "")
+        {
+            error = "Please enter home_address of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getPosition() == "")
+        {
+            error = "Please enter position of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getWork_experience() <0)
+        {
+            error = "Please enter correct work_experience of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        Emp.setId_employee(id);
+        dao_emp.update(Emp);
         return "redirect:/emp/main";
     }
 
+    //проверка на ошибку
     @PostMapping()
-    public String CreateEmp(@ModelAttribute("emp") Employee Emp) {
-
+    public String CreateEmp(@ModelAttribute("emp") Employee Emp, Model model) {
+        String error;
+        if (Emp.getName() == "")
+        {
+            error = "Please enter name of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getSurname() == "")
+        {
+            error = "Please enter surname of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getE_mail() == "")
+        {
+            error = "Please enter E_mail of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getPhone() == "")
+        {
+            error = "Please enter phone of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getEducation() == "")
+        {
+            error = "Please enter education of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getHome_address() == "")
+        {
+            error = "Please enter home_address of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getPosition() == "")
+        {
+            error = "Please enter position of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (Emp.getWork_experience() <0)
+        {
+            error = "Please enter correct work_experience of the employee!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
         dao_emp.save(Emp);
         return "redirect:/emp/main";
     }
@@ -83,6 +182,7 @@ public class EmpController {
         return "emp/serv";
     }
 
+    //проверка на ошибку
     @PostMapping("/select")
     public String SelectClient (@RequestParam(name = "client") int id_cl,
                                 @RequestParam(name = "serv") int id_serv,
@@ -90,6 +190,31 @@ public class EmpController {
                                 @RequestParam(name = "date_of_end") String date_of_end,
                                 Model model)
             throws ParseException {
+        String error;
+        if (id_cl == -1)
+        {
+            error = "Please select a client!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (id_serv == -1)
+        {
+            error = "Please select a service!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (date_of_begin == null)
+        {
+            error = "Please select date of beginning of the contract!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
+        if (date_of_end == null)
+        {
+            error = "Please select date of end of the contract!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date_of_beg = format.parse(date_of_begin);
         Date date_of_e = format.parse(date_of_end);
