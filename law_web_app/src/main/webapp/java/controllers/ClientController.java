@@ -49,7 +49,7 @@ public class ClientController {
     //проверка на ошибку
     @PostMapping()
     public String CreateClient(@ModelAttribute("client") Client client, Model model) {
-        String error;
+        String error = "Please enter all fields";
         if (client.getName() == "")
         {
             error = "Please enter name of the client!";
@@ -89,7 +89,7 @@ public class ClientController {
     @PostMapping("/{id}")
     public String UpdateClient(@ModelAttribute("client") Client client, Model model)
     {
-        String error;
+        String error = "Please enter all fields";
         if (client.getName() == "")
         {
             error = "Please enter name of the client!";
@@ -141,7 +141,7 @@ public class ClientController {
                                 @RequestParam(name = "date_of_end") String date_of_end,
                                 Model model)
             throws ParseException {
-        String error;
+        String error = "Please enter all fields";
         if (id_serv == -1)
         {
             error = "Please select a service!";
@@ -154,13 +154,13 @@ public class ClientController {
             model.addAttribute("type_error", error);
             return "Error";
         }
-        if (date_of_begin == null)
+        if (date_of_begin == "")
         {
             error = "Please select date of beginning of the contract!";
             model.addAttribute("type_error", error);
             return "Error";
         }
-        if (date_of_end == null)
+        if (date_of_end == "")
         {
             error = "Please select date of end of the contract!";
             model.addAttribute("type_error", error);

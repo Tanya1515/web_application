@@ -49,7 +49,7 @@ public class EmpController {
     @PostMapping("/{id}")
     public String UpdateEmp(@ModelAttribute("emp") Employee Emp, @PathVariable int id, Model model)
     {
-        String error;
+        String error = "Please enter all fields";
         if (Emp.getName() == "")
         {
             error = "Please enter name of the employee!";
@@ -89,12 +89,6 @@ public class EmpController {
         if (Emp.getPosition() == "")
         {
             error = "Please enter position of the employee!";
-            model.addAttribute("type_error", error);
-            return "Error";
-        }
-        if (Emp.getWork_experience() <0)
-        {
-            error = "Please enter correct work_experience of the employee!";
             model.addAttribute("type_error", error);
             return "Error";
         }
@@ -106,7 +100,7 @@ public class EmpController {
     //проверка на ошибку
     @PostMapping()
     public String CreateEmp(@ModelAttribute("emp") Employee Emp, Model model) {
-        String error;
+        String error = "Please enter all fields";
         if (Emp.getName() == "")
         {
             error = "Please enter name of the employee!";
@@ -146,12 +140,6 @@ public class EmpController {
         if (Emp.getPosition() == "")
         {
             error = "Please enter position of the employee!";
-            model.addAttribute("type_error", error);
-            return "Error";
-        }
-        if (Emp.getWork_experience() <0)
-        {
-            error = "Please enter correct work_experience of the employee!";
             model.addAttribute("type_error", error);
             return "Error";
         }
@@ -190,7 +178,7 @@ public class EmpController {
                                 @RequestParam(name = "date_of_end") String date_of_end,
                                 Model model)
             throws ParseException {
-        String error;
+        String error = "Please enter all fields";
         if (id_cl == -1)
         {
             error = "Please select a client!";
@@ -203,13 +191,13 @@ public class EmpController {
             model.addAttribute("type_error", error);
             return "Error";
         }
-        if (date_of_begin == null)
+        if (date_of_begin == "")
         {
             error = "Please select date of beginning of the contract!";
             model.addAttribute("type_error", error);
             return "Error";
         }
-        if (date_of_end == null)
+        if (date_of_end == "")
         {
             error = "Please select date of end of the contract!";
             model.addAttribute("type_error", error);

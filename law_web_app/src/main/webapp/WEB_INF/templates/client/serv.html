@@ -5,8 +5,9 @@
     <title>Title</title>
 </head>
 <body>
-List of services for <p th:text="${ client.getName() + ' ' + client.getSurname()}">VALUE1</p>
-
+<p th:text="${ client.getName() + ' ' + client.getSurname()}">VALUE1</p>
+List of services
+<br/>
 <div th:each="serv : ${services}">
     <a th:text="${serv.getName_of_service() + ' ' + serv.getCost_of_service()}">serv </a>
 </div>

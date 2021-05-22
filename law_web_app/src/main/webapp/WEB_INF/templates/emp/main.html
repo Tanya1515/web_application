@@ -6,18 +6,18 @@
 </head>
 <body>
 
-<form action="select1.php" method="post">
-  <p><select name="clients">
+<form action="/emp/select" method="post">
+  <p><select name="client">
     <option value="-1" > Choose client</option>
   <div th:each="client : ${clients}">
-    <option th:text="${client.getName() + ' ' + client.getSurname()}">client</option>
+    <option th:value= "${client.getId()}" th:text="${client.getName() + ' ' + client.getSurname()}">client</option>
   </div>
   </select></p>
 
   <p><select name="serv">
     <option value="-1" > Choose type of service</option>
   <div th:each="serv : ${services}">
-    <option th:text="${serv.getName_of_service()}">serv</option>
+    <option th:value= "${serv.getId_service()}" th:text="${serv.getName_of_service()}">serv</option>
   </div>
   </select></p>
 

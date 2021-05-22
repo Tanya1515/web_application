@@ -41,18 +41,40 @@ public class RegController {
             @RequestParam(name = "client") int id_client,
             @RequestParam(name = "serv") int id_serv,
             @RequestParam(name = "date_of_begin") String date_of_begin,
-            @RequestParam(name = "date_of_end") String date_of_end)
+            @RequestParam(name = "date_of_end") String date_of_end,
+            Model model)
             throws ParseException {
-        if (id_client == -1)
-            return "Error";
+        String error = "Please enter all fields";
         if (id_serv == -1)
+        {
+            error = "Please select a service!";
+            model.addAttribute("type_error", error);
             return "Error";
+        }
         if (id_emp == -1)
+        {
+            error = "Please select an employee!";
+            model.addAttribute("type_error", error);
             return "Error";
-        if (date_of_begin == null)
+        }
+        if (id_client == -1)
+        {
+            error = "Please select a client!";
+            model.addAttribute("type_error", error);
             return "Error";
-        if (date_of_end == null)
+        }
+        if (date_of_begin == "")
+        {
+            error = "Please select date of beginning of the contract!";
+            model.addAttribute("type_error", error);
             return "Error";
+        }
+        if (date_of_end == "")
+        {
+            error = "Please select date of end of the contract!";
+            model.addAttribute("type_error", error);
+            return "Error";
+        }
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
         Date date_of_beg = format.parse(date_of_begin);
         Date date_of_e = format.parse(date_of_end);
