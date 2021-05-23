@@ -1,4 +1,8 @@
+import entities.Client;
+import service.Client_serv;
+
 import java.sql.SQLException;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) throws SQLException {
@@ -40,12 +44,12 @@ public class Main {
         //{
           //  System.out.print(emp.getName_of_service());
         //}
-//        Client_serv serv = new Client_serv();
-//        List<Client> l = serv.Client_serv_emp_date(7,3, java.sql.Date.valueOf("2011-10-01"), java.sql.Date.valueOf("2011-04-01"));
-//        for (Client c :l)
-//        {
-//            System.out.print(c.getName());
-//        }
+        Client_serv serv = new Client_serv();
+        List<Client> l = serv.Client_serv_emp_date(1,9, java.sql.Date.valueOf("2014-04-01"), java.sql.Date.valueOf("2014-03-01"));
+        for (Client c :l)
+       {
+            System.out.print(c.getName());
+        }
         //System.out.print(serv.UpdateClient(13, "Maria", "Tumanova", "89036554673", "tanyaozerova1318@gmail.com"));
         //Client cl_create = new Client("Tanya", "Ozerova", "89636397038", "tanyaozerova@gmail.com");
         //System.out.print(serv.CreateClient(cl_create));

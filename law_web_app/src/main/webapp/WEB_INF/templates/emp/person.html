@@ -1,8 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Emp update</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 
@@ -79,15 +79,15 @@
     </select>
 
     <br/>
-    <input type="submit" value="Save"/>
+    <input id="save_emp_button" type="submit" value="Save"/>
 </form>
 
 <form th:action= "@{/emp/del/{id}(id=${emp.getId_employee()})}" >
-    <p><input type="submit" value="Delete"></p>
+    <p><input id="delete_button" type="submit" value="Delete"></p>
 </form>
 
 <form th:action= "@{/emp/serv/{id}(id=${emp.getId_employee()})}" >
-    <p><input type="submit" value="List of services"></p>
+    <p><input id="serv_button" type="submit" value="List of services"></p>
 </form>
 </body>
 </html>

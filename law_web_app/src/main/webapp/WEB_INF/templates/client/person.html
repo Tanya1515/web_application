@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 <form th:method="POST" th:action="@{/client/{id}(id=${client.getId()})}" th:object="${client}">
 
     <label for="name"> Name: </label>
@@ -26,15 +27,15 @@
     <input type="text" th:field="*{phone}" id="phone"/>
 
     <br/>
-    <input type="submit" value="Save"/>
+    <input id="save_client_button" type="submit" value="Save"/>
 </form>
 
 <form th:action= "@{/client/del/{id}(id=${client.getId()})}" >
-    <p><input type="submit" value="Delete"></p>
+    <p><input id="delete_button" type="submit" value="Delete"></p>
 </form>
 
 <form th:action= "@{/client/serv/{id}(id=${client.getId()})}" >
-    <p><input type="submit" value="List of services"></p>
+    <p><input id="serv_button" type="submit" value="List of services"></p>
 </form>
 
 </body>

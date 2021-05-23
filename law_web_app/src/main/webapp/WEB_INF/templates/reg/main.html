@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Getting Started: Serving Web Content</title>
+  <title> Reg page</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 Registration of new contract:
 
 <form method="POST" action="/reg/save" >
@@ -33,11 +34,11 @@ Registration of new contract:
 
   <p>Choose the date of end: <input type="date" name="date_of_end">
 
-  <p><input type="submit" value="Create"></p>
+  <p><input id="save_contract_button" type="submit" value="Create"></p>
 </form>
 
 <form action= "/greeting" >
-  <p><input type="submit" value="Cancel"></p>
+  <p><input id="cancel_button" type="submit" value="Cancel"></p>
 </form>
 
 </body>

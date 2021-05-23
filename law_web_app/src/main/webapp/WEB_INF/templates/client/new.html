@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>New client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 <form th:method="POST" th:action="@{/client}" th:object="${client}">
 
     <label for="name"> Name: </label>
@@ -13,7 +14,7 @@
     <br/>
 
     <label for="surname">Surname: </label>
-    <input type="text" th:field="*{surname}" id="surname"/>
+    <input type="text" id="client_name" th:field="*{surname}" id="surname"/>
 
     <br/>
 
@@ -26,15 +27,11 @@
     <input type="text" th:field="*{phone}" id="phone"/>
 
     <br/>
-    <input type="submit" value="Create"/>
-</form>
-
-<form action= "/client/main" >
-    <p><input type="submit" value="Discard"></p>
+    <input id="new_client_button" type="submit" value="Create"/>
 </form>
 
 <form action= "/greeting" >
-    <p><input type="submit" value="Main Page"></p>
+    <p><input id="main_button" type="submit" value="Main Page"></p>
 </form>
 
 </body>

@@ -1,22 +1,22 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Getting Started: Serving Web Content</title>
+  <title> Hello web app</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
 <p th:text="'Welcome to Lawyer of Devil !'" />
 
 <form action= "/client/main" >
-  <p><input type="submit" value="Clients"></p>
+  <p><input id="all_clients_button" type="submit" value="Clients"></p>
 </form>
 
 <form action= "/emp/main" >
-  <p><input type="submit" value="Employees"></p>
+  <p><input id="all_emps_button" type="submit" value="Employees"></p>
 </form>
 
 <form action= "/reg/main" >
-  <p><input type="submit" value="New contract"></p>
+  <p><input id="new_contract_button" type="submit" value="New contract"></p>
 </form>
 
 </body>

@@ -1,10 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Serv for client</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
+
 <p th:text="${ client.getName() + ' ' + client.getSurname()}">VALUE1</p>
 List of services
 <br/>
@@ -12,12 +13,9 @@ List of services
     <a th:text="${serv.getName_of_service() + ' ' + serv.getCost_of_service()}">serv </a>
 </div>
 <br/>
-<form action= "/client/main" >
-    <p><input type="submit" value="All clients"></p>
-</form>
 
 <form action= "/greeting" >
-    <p><input type="submit" value="Main Page"></p>
+    <p><input id="main_button" type="submit" value="Main Page"></p>
 </form>
 </body>
 </html>

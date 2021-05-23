@@ -1,7 +1,7 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-  <title>Getting Started: Serving Web Content</title>
+  <title>Main client</title>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
@@ -25,7 +25,7 @@
 
   <p>Choose the date of end: <input type="date" name="date_of_end">
 
-  <p><input type="submit" value="Select"></p>
+  <p><input id="select_button" type="submit" value="Select"></p>
 </form>
 
 <div th:each="client : ${clients}">
@@ -33,11 +33,11 @@
 </div>
 <br/>
 <form action= "/client/new" >
-  <p><input type="submit" value="Add client"></p>
+  <p><input id="new_client_button" type="submit" value="Add client"></p>
 </form>
 
 <form action= "/greeting" >
-  <p><input type="submit" value="Main Page"></p>
+  <p><input id="main_button" type="submit" value="Main Page"></p>
 </form>
 
 </body>

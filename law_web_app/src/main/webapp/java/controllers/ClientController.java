@@ -15,6 +15,7 @@ import service.Service_serv;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @Controller
 @RequestMapping("/client")
@@ -141,7 +142,7 @@ public class ClientController {
                                 @RequestParam(name = "date_of_end") String date_of_end,
                                 Model model)
             throws ParseException {
-        String error = "Please enter all fields";
+        String error;
         if (id_serv == -1)
         {
             error = "Please select a service!";
@@ -169,7 +170,8 @@ public class ClientController {
             SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
             Date date_of_beg = format.parse(date_of_begin);
             Date date_of_e = format.parse(date_of_end);
-            model.addAttribute("clients", cl.Client_serv_emp_date(id_serv, id_emp, date_of_beg, date_of_e));
+            List<Client> l = cl.Client_serv_emp_date(id_serv, id_emp, date_of_beg, date_of_e);
+            model.addAttribute("clients", l);
             return "client/select";
         }
 
