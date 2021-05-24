@@ -29,7 +29,7 @@
 </form>
 
 <div th:each="client : ${clients}">
-  <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName() + ' ' + client.getSurname()}">user </a>
+  <a th:href="@{/client/{id}(id=${client.getId()})}" th:text="${client.getName() + ' ' + client.getSurname()}" th:id="${client.getId()}" >user </a>
 </div>
 <br/>
 <form action= "/client/new" >

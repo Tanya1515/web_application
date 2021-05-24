@@ -98,7 +98,7 @@ public class Employee {
         this.position = position;
     }
 
-    public int getWork_experience() {
+    public Integer getWork_experience() {
         return work_experience;
     }
 
