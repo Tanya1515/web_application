@@ -85,7 +85,7 @@ public class web_test {
 
         //проверка, что клиент добавлен корректно
         String id_new = "//a[@href='/client/" + max_id + "']" ;
-        String id = "//a[@href='/client/" + "171" + "']" ;
+        String id = "//a[@href='/client/" + "11" + "']" ;
 
         button.click();
         wait.until(stalenessOf(button));
@@ -177,13 +177,18 @@ public class web_test {
         Employee new_emp = new Employee("Igor", "Veremchuk", "8499999999", "igormemmory@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2",  "associate", 2);
 
         driver.get(appURL);
-        //Assert.assertEquals(driver.getTitle(), "Hello web app");
+        WebElement button = wait.until(visibilityOfElementLocated(By.id("all_emps_button")));
+        Assert.assertEquals(driver.getTitle(), "Hello web app");
 
-        driver.findElement(By.id("all_emps_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main emp");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("new_emp_button")));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
 
-        driver.findElement(By.id("new_emp_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "New emp");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("create_emp_button")));
+        Assert.assertEquals(driver.getTitle(), "New emp");
 
         driver.findElement(By.id("name")).sendKeys(new_emp.getName());
         driver.findElement(By.id("surname")).sendKeys(new_emp.getSurname());
@@ -194,8 +199,6 @@ public class web_test {
         driver.findElement(By.id("position")).sendKeys(new_emp.getPosition());
         Select work_exp = new Select(driver.findElement(By.name("work_experience")));
         work_exp.selectByVisibleText(new_emp.getWork_experience().toString());
-        driver.findElement(By.id("create_emp_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main emp");
 
         DAO_employee dao_emp = new DAO_employee();
         List<Employee> l = dao_emp.ListEmp ();
@@ -206,8 +209,17 @@ public class web_test {
 
         //проверка корректности добавления нового работника
         String id_new = "//a[@href='/emp/" + max_id + "']" ;
+        String id = "//a[@href='/emp/" + "2" + "']" ;
 
-        driver.findElement(By.xpath(id_new)).click();
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.xpath(id_new)));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
+
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("save_emp_button")));
+        Assert.assertEquals(driver.getTitle(), "Emp update");
         Employee check_emp = new Employee();
         check_emp.setName(driver.findElement(By.id("name")).getAttribute("value"));
         check_emp.setSurname(driver.findElement(By.id("surname")).getAttribute("value"));
@@ -216,42 +228,64 @@ public class web_test {
         check_emp.setEducation(driver.findElement(By.id("education")).getAttribute("value"));
         check_emp.setPosition(driver.findElement(By.id("position")).getAttribute("value"));
         check_emp.setHome_address(driver.findElement(By.id("home_address")).getAttribute("value"));
-        //check_emp.setWork_experience(work_exp.selectByVisibleText(new_emp.getWork_experience().toString()));
+        Select select = new Select(driver.findElement(By.name("work_experience")));
+        check_emp.setWork_experience(Integer.parseInt(select.getFirstSelectedOption().getText()));
 
-        driver.findElement(By.id("save_emp_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main Employee");
-        Check_emps(new_emp, check_emp);
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.xpath(id_new)));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
+        //Check_emps(new_emp, check_emp);
 
         //изменение информации о работнике
-        driver.findElement(By.xpath(id_new)).click();
-        //Assert.assertEquals(driver.getTitle(), "Update Employee");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("save_emp_button")));
+        Assert.assertEquals(driver.getTitle(), "Emp update");
         new_emp.setName("Alex");
         driver.findElement(By.id("name")).sendKeys(new_emp.getName());
-        driver.findElement(By.id("save_emp_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main Employee");
 
-        driver.findElement(By.xpath(id_new)).click();
-        //Assert.assertEquals(driver.getTitle(), "Update Employee");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.xpath(id_new)));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
+
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("save_emp_button")));
+        Assert.assertEquals(driver.getTitle(), "Emp update");
         check_emp.setName(driver.findElement(By.id("name")).getAttribute("value"));
-        driver.findElement(By.id("save_emp_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main Employee");
+
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.xpath(id)));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
 
         //Check_emps(new_emp, check_emp);
 
         //список услуг, которые предоставляет данный сотрудник
-        String id = "//a[@href='/emp/" + "2" + "']" ;
-        driver.findElement(By.xpath(id)).click();
-        //Assert.assertEquals(driver.getTitle(), "Update Employee");
-        driver.findElement(By.id("serv_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Serv for emp");
-        driver.findElement(By.id("all_emps_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main Employee");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("serv_button")));
+        Assert.assertEquals(driver.getTitle(), "Emp update");
+
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("all_emps_button")));
+        Assert.assertEquals(driver.getTitle(), "Serv for emp");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.xpath(id_new)));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
 
         //удаление нового сотрудника
-        driver.findElement(By.xpath(id_new)).click();
-        //Assert.assertEquals(driver.getTitle(), "Update Employee");
-        driver.findElement(By.id("delete_button")).click();
-        //Assert.assertEquals(driver.getTitle(), "Main client");
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("delete_button")));
+        Assert.assertEquals(driver.getTitle(), "Emp update");
+        button.click();
+        wait.until(stalenessOf(button));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
     }
 
     @Test()
@@ -371,12 +405,55 @@ public class web_test {
     }
 
 
-   /* @Test()
-    public void Select_ClientEmp_Test(){
+    @Test()
+    public void Select_Emp_Test(){
         driver.get(appURL);
+        WebElement button = wait.until(visibilityOfElementLocated(By.id("all_emps_button")));
         Assert.assertEquals(driver.getTitle(), "Hello web app");
-    }*/
 
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("select_button")));
+        Assert.assertEquals(driver.getTitle(), "Main emp");
+
+        Select emp = new Select(driver.findElement(By.name("client")));
+        emp.selectByValue("172");
+
+        Select serv = new Select(driver.findElement(By.name("serv")));
+        serv.selectByValue("3");
+
+        driver.findElement(By.name("date_of_begin")).sendKeys("2013-09-10");
+
+        driver.findElement(By.name("date_of_end")).sendKeys("2020-08-01");
+        button.click();
+        wait.until(stalenessOf(button));
+        Assert.assertEquals(driver.getTitle(), "Select for emp");
+    }
+
+    @Test()
+    public void Select_Client_Test(){
+        driver.get(appURL);
+        WebElement button = wait.until(visibilityOfElementLocated(By.id("all_clients_button")));
+        Assert.assertEquals(driver.getTitle(), "Hello web app");
+
+        button.click();
+        wait.until(stalenessOf(button));
+        button = wait.until(visibilityOfElementLocated(By.id("select_button")));
+        Assert.assertEquals(driver.getTitle(), "Main client");
+
+        Select emp = new Select(driver.findElement(By.name("emp")));
+        emp.selectByValue("3");
+
+        Select serv = new Select(driver.findElement(By.name("serv")));
+        serv.selectByValue("3");
+
+        driver.findElement(By.name("date_of_begin")).sendKeys("2013-09-10");
+
+        driver.findElement(By.name("date_of_end")).sendKeys("2020-08-01");
+        button.click();
+        wait.until(stalenessOf(button));
+        Assert.assertEquals(driver.getTitle(), "Select for client");
+    }
 
 
     @AfterClass

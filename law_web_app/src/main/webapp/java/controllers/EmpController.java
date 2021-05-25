@@ -207,7 +207,7 @@ public class EmpController {
         Date date_of_beg = format.parse(date_of_begin);
         Date date_of_e = format.parse(date_of_end);
         model.addAttribute("emps", em.Emp_serv_client_date(id_serv, id_cl, date_of_beg, date_of_e));
-        return "client/select";
+        return "emp/select";
     }
 
 }
