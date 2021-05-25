@@ -174,7 +174,7 @@ public class web_test {
 
     @Test()
     public void Emp_CreateDeleteUpdateServ_Test(){
-        Employee new_emp = new Employee("Igor", "Veremchuk", "8499999999", "igormemmory@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2",  "associate", 2);
+        Employee new_emp = new Employee("Igor", "Veremchuk", "8499999999 ", "igormemmory@gmail.com", "CMC MSU", "st. Angarskaya, 20, 2",  "associate", 2);
 
         driver.get(appURL);
         WebElement button = wait.until(visibilityOfElementLocated(By.id("all_emps_button")));
@@ -230,12 +230,13 @@ public class web_test {
         check_emp.setHome_address(driver.findElement(By.id("home_address")).getAttribute("value"));
         Select select = new Select(driver.findElement(By.name("work_experience")));
         check_emp.setWork_experience(Integer.parseInt(select.getFirstSelectedOption().getText()));
+        Check_emps(new_emp, check_emp);
 
         button.click();
         wait.until(stalenessOf(button));
         button = wait.until(visibilityOfElementLocated(By.xpath(id_new)));
         Assert.assertEquals(driver.getTitle(), "Main emp");
-        //Check_emps(new_emp, check_emp);
+
 
         //изменение информации о работнике
         button.click();
@@ -261,7 +262,7 @@ public class web_test {
         button = wait.until(visibilityOfElementLocated(By.xpath(id)));
         Assert.assertEquals(driver.getTitle(), "Main emp");
 
-        //Check_emps(new_emp, check_emp);
+        Check_emps(new_emp, check_emp);
 
         //список услуг, которые предоставляет данный сотрудник
         button.click();
